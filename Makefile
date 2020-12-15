@@ -58,3 +58,6 @@ release: $(TARGET_BIN)
 	cp $(TARGET_BIN) release/linkerd-await
 	strip release/linkerd-await
 	$(SHASUM) release/linkerd-await >release/linkerd-await.shasum
+
+build-docker-arm64:
+	docker buildx build --platform linux/arm64 -o type=local,dest=release/. -t komljen/linkerd-await:latest-arm64 .
